@@ -6,6 +6,7 @@ A simple bash utility to list and filter local git repositories with status info
 
 - List all git repos in current directory
 - Show branch name and dirty/clean status
+- Show PUBLIC/PRIVATE visibility for GitHub repos (requires `gh` CLI)
 - Filter repos by pattern (e.g., by username or host)
 - Color-coded output for quick scanning
 
@@ -41,9 +42,9 @@ myrepos
 ## Example Output
 
 ```
-my-project/                  (main)    CLEAN  https://github.com/user/my-project.git
-another-repo/                (develop) DIRTY  https://github.com/user/another-repo.git
-forked-lib/                  (master)  CLEAN  https://github.com/other/forked-lib.git
+my-project/                  (main)    CLEAN  PUBLIC   https://github.com/user/my-project.git
+another-repo/                (develop) DIRTY  PRIVATE  https://github.com/user/another-repo.git
+forked-lib/                  (master)  CLEAN  PUBLIC   https://github.com/other/forked-lib.git
 ```
 
 ## Configuration
