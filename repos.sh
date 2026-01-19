@@ -32,7 +32,7 @@ repos () {
       if gh repo view "$repo_path" --json isPrivate -q '.isPrivate' 2>/dev/null | grep -q true; then
         visibility=$'\e[31mPRIVATE\e[0m'
       else
-        visibility=$'\e[35mPUBLIC\e[0m'
+        visibility=$'\e[32mPUBLIC\e[0m'
       fi
     fi
 
