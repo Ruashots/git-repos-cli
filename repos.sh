@@ -29,10 +29,14 @@ repos () {
     visibility=""
     if [[ "$url" =~ github\.com[:/]([^/]+/[^/.]+) ]]; then
       repo_path="${BASH_REMATCH[1]}"
-      if gh repo view "$repo_path" --json isPrivate -q '.isPrivate' 2>/dev/null | grep -q true; then
-        visibility=$'\e[31mPRIVATE\e[0m'
+      if gh_result=$(gh repo view "$repo_path" --json isPrivate -q '.isPrivate' 2>/dev/null); then
+        if [[ "$gh_result" == "true" ]]; then
+          visibility=$'\e[31mPRIVATE\e[0m'
+        else
+          visibility=$'\e[32mPUBLIC\e[0m'
+        fi
       else
-        visibility=$'\e[32mPUBLIC\e[0m'
+        visibility=$'\e[2mGONE\e[0m'
       fi
     fi
 
